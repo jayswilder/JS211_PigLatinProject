@@ -4,18 +4,29 @@
 const assert = require('assert');
 // brings in the readline module to access the command line
 const readline = require('readline');
+const { strict } = require('assert');
 // use the readline module to print out to the command line
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
 
+const pigLatin = (words) => {
+  
+  
+  const vowels = words.toLowerCase().match(/[aeiou]/);
+  const firstVowel = words.toLowerCase().indexOf(vowels);
 
-const pigLatin = (word) => {
+  console.log(" ");
+  console.log("Your new words is:");
+  
 
-  // Your code here
+      if (firstVowel > 0) {
+           return words.slice(firstVowel) + words.slice(0, firstVowel) + "ay";
+             } 
+            return words.toLowerCase() + "yay";
+            }
 
-}
 
 // the first function called in the program to get an input from the user
 // to run the function use the command: node main.js
@@ -23,6 +34,7 @@ const pigLatin = (word) => {
 const getPrompt = () => {
   rl.question('word ', (answer) => {
     console.log( pigLatin(answer) );
+    console.log(" ");
     getPrompt();
   });
 }

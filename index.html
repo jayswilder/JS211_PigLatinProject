@@ -2,17 +2,46 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
-    <script src="main.js"></script>
+    <title>Pig Latin Translator</title>
+    <link rel="stylesheet" href="main.css">
   </head>
   <body>
-    <h1>Pig Latin!</h1>
-    <hr/>
-    
-    <br><label for="myWord">What word would you like to translate?</label><br>
-    <input type="text" name="myWord" id="myWord"><br><br>
-    <button onclick="pigLatin()">Translate!</button>
-    <hr/>
-    <div id="display-element"></div>
+    <div class="main"><h1>Pig Latin!</h1>
+      <hr/>
+      
+      <br>
+      <label for="myWord">What word would you like to translate?</label>
+      <br>
+      <input type="text" name="myWord" id="myWord">
+      <br><br>
+      
+      <button onclick="pigLatin()">Translate!</button>
+      
+      <hr/>
+
+        <div id="display-element">
+
+        </div>
+    </div>
+    <script>
+  
+  const pigLatin = (myWord) => {
+  
+  let myWords = document.getElementById('myWord').value;
+  let wordTrim = myWords.replace(/\s+/g, '');
+  let wordLower = wordTrim.toLowerCase();
+  const vowels = wordTrim.match(/[aeiou]/);
+  const firstVowel = wordTrim.indexOf(vowels);
+  
+    if (document.getElementById('myWord').value == "") {
+      alert("Error! Please enter a word to translate.")
+      return;
+    } else if (firstVowel > 0) {
+      return document.getElementById('display-element').innerHTML = wordLower.slice(firstVowel) + wordLower.toLowerCase().slice(0, firstVowel) + "ay";
+       } 
+       return document.getElementById('display-element').innerHTML = wordLower + "yay";
+       };
+
+    </script>
   </body>
 </html>

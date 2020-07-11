@@ -13,31 +13,29 @@ const rl = readline.createInterface({
 
 const pigLatin = (words) => {
   
+  let wordTrim = words.replace(/\s+/g, '');
+  let wordLower = wordTrim.toLowerCase();
+  const vowels = wordTrim.match(/[aeiou]/);
+  const firstVowel = wordTrim.indexOf(vowels);
   
-  const vowels = words.toLowerCase().match(/[aeiou]/);
-  const firstVowel = words.toLowerCase().indexOf(vowels);
+ 
 
-  console.log(" ");
-  console.log("Your new words is:");
-  
-
-      if (firstVowel > 0) {
-           return words.slice(firstVowel) + words.slice(0, firstVowel) + "ay";
-             } 
-            return words.toLowerCase() + "yay";
-            }
-
+    if (firstVowel > 0) {
+      return wordLower.slice(firstVowel) + wordLower.toLowerCase().slice(0, firstVowel) + "ay";
+       } 
+       return wordLower + "yay";
+       };
 
 // the first function called in the program to get an input from the user
 // to run the function use the command: node main.js
 // to close it ctrl + C
 const getPrompt = () => {
-  rl.question('word ', (answer) => {
+  rl.question('Translate word: ', (answer) => {
     console.log( pigLatin(answer) );
     console.log(" ");
     getPrompt();
   });
-}
+};
 
 // Unit Tests
 // You use them run the command: npm test main.js
